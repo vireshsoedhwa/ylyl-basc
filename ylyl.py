@@ -7,7 +7,7 @@ from datetime import datetime
 def get_yl(section):
     board = basc_py4chan.Board(section)
     all_thread_ids = board.get_all_thread_ids()    
-    conn = sqlite3.connect("/home/ubuntu/project/example.db")
+    conn = sqlite3.connect("/home/ubuntu/example.db")
 
     # print("contents before:")
     # for row in conn.execute("select id, threadid, date, files, downloaded, section, active from threads"):        
@@ -64,7 +64,7 @@ def get_yl(section):
     conn.close()
 
 def initdb():    
-    conn = sqlite3.connect("/home/ubuntu/project/example.db")
+    conn = sqlite3.connect("/home/ubuntu/example.db")
     try:
         with conn:
             conn.execute('''create table threads (id integer primary key AUTOINCREMENT,\
@@ -74,7 +74,7 @@ def initdb():
     conn.close()
 
 def fetchall_yl(section):
-    conn = sqlite3.connect("/home/ubuntu/project/example.db") 
+    conn = sqlite3.connect("/home/ubuntu/example.db") 
     board = basc_py4chan.Board(section)
     listofactivethreads = []
     print("list of active threads")
@@ -94,7 +94,7 @@ def fetchall_yl(section):
                 if downloaded >= prev_downloaded:
                     # download the files
 
-                    dest_dir = "/home/ubuntu/project/" + section + "/" + str(activethread[1]) + "/"
+                    dest_dir = "/home/ubuntu/" + section + "/" + str(activethread[1]) + "/"
                     dest_exact = dest_dir + f.filename
 
                     if not os.path.exists(dest_dir):
