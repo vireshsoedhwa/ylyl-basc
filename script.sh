@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python3 /home/ubuntu/project/ylyl.py
+python3 /home/ubuntu/ylyl-basc/ylyl.py
 
 test="YLYL last run: "
 thedate="`date`"
